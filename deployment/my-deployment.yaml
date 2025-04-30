@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-awesome-namespace
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-awesome-configmap
+  namespace: my-awesome-namespace
+data:
+  not-a-secret-anymore: "${MY_SECRET}"
