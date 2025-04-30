@@ -47,3 +47,8 @@ Another form of this error occurs if you do `*.some-string` instead of `*-some-s
 ```plaintext
 {"level":"error","ts":"2025-04-30T21:32:32.792Z","msg":"Reconciliation failed after 178.632044ms, next try in 10m0s","controller":"kustomization","controllerGroup":"kustomize.toolkit.fluxcd.io","controllerKind":"Kustomization","Kustomization":{"name":"gitops","namespace":"flux-debug"},"namespace":"flux-debug","name":"gitops","reconcileID":"a611ae29-05ff-4e3d-85e5-4116ac7002a4","revision":"main@sha1:05fcae64958b769c1f9c69092c3bf4f4d0e4bad3","error":"post build failed for 'ingress-nginx': envsubst error: YAMLToJSON: yaml: line 30: did not find expected alphabetic or numeric character"}
 ```
+
+## Update
+Known issue. Is documented here: https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
+
+TLDR: You just need to do `${quote}${MY_SECRET}${quote}` in your gitops manifests.
